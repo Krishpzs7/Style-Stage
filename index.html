@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Stage</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #e8eaf6;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 170px 80px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: text-glow 2s ease-in-out infinite alternate;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 1em;
+            color: #FFB7C5;
+        }
+
+        header p {
+            font-size: 1.25em;
+            font-weight: 50;
+            margin-bottom: 1em;
+            color: #FFB7C5;
+        }
+
+        /* Existing styles */
+        a {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Styles for normalizing the appearance of specific links */
+        .text-link {
+            color: #FFB7C5;
+            /* Matches the text color with regular content */
+            text-decoration: none;
+            /* No underline */
+        }
+
+        .text-link:hover,
+        .text-link:focus {
+            text-decoration: underline;
+            /* Adds underline on hover/focus for accessibility */
+        }
+
+        /* Other existing or new styles */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+
+        @keyframes text-glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
+
+        .scroll-arrow {
+            color: #DE3163;
+            display: block;
+            margin: 35px auto 0;
+            /* Centers horizontally and adds some space above */
+            font-size: 30px;
+            /* Arrow size, adjust as needed */
+            cursor: pointer;
+            /* Indicates the arrow is clickable */
+            animation: bounce 2s infinite;
+            /* Bouncing animation */
+            text-align: center;
+            /* Ensures the arrow is centered if `display: block` */
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+
+
+        nav {
+            background: #eee;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+            /* Space between nav and main content */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Link Styling */
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* SVG Icon Styling in Header */
+        header .link-github span svg {
+            fill: #fff;
+            margin-right: 8px;
+        }
+
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul li {
+                width: 100%;
+                padding: 10px 0;
+            }
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 1200px;
+            margin-bottom: 10px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            /* Ensures no overflow of content outside the border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        main {
+            position: relative;
+            /* Ensures the padding is applied correctly if using box-sizing */
+            background-size: cover;
+            /* Covers the entire area of the main element, might also use contain based on desire */
+            background-position: center;
+            /* Centers the background image */
+            background-repeat: no-repeat;
+            /* Prevents the image from repeating */
+            margin: 0px 0px 20px 0px;
+            /* Sets the bottom margin to 20px and others to 0 */
+            padding: 40px;
+            /* Adds padding inside the main element */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Optional: Adds shadow for depth (can remove or adjust) */
+            border-radius: 8px;
+            /* Optional: Rounds the corners of the main element */
+            color: #333;
+            /* Sets the text color to dark grey (change as needed) */
+            box-sizing: border-box;
+            /* Makes sure padding does not affect the overall dimensions */
+        }
+
+
+        /* Article Styling */
+        article {
+            margin-bottom: 40px;
+            /* Space between articles */
+            padding: 20px;
+            border-bottom: 2px solid #eee;
+            /* Subtle line between articles */
+        }
+
+        article:last-child {
+            border-bottom: none;
+            /* Remove border from the last article */
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 20px;
+            /* Space between sections */
+        }
+
+        section h2 {
+            color: #333;
+            font-size: 22px;
+            border-bottom: 1px solid #ddd;
+            /* Line under section titles */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Paragraph Styling within Sections */
+        section p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.75;
+            margin-bottom: 15px;
+            /* Space between paragraphs */
+        }
+
+        /* List Styling within Sections */
+        section ul {
+            list-style-type: square;
+            /* Stylish square bullets */
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        section ul li {
+            margin-bottom: 10px;
+            /* Space between list items */
+            color: #555;
+        }
+
+        /* Link Styling within Articles */
+        article a {
+            color: #FF5733;
+            ;
+            text-decoration: underline;
+        }
+
+        article a:hover {
+            color: #004499;
+        }
+
+        /* Blockquote Styling */
+        blockquote {
+            background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+            font-style: italic;
+            background-color: #f9f9f9;
+            border-left: 5px solid #ccc;
+            padding: 10px 20px;
+            margin: 20px 0;
+        }
+
+        /* Header 3 Styling */
+        h3 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Numbered List Styling */
+        ol {
+            counter-reset: section;
+            list-style-type: none;
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        ol li {
+            counter-increment: section;
+            margin-bottom: 10px;
+            /* Space between list items */
+        }
+
+        ol li::before {
+            content: counters(section, ".") " ";
+            font-weight: bold;
+        }
+
+        /* Styling for 'profile' and 'styles' asides */
+        aside {
+            background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        aside h2,
+        aside h4 {
+            color: #333;
+            font-size: 20px;
+        }
+
+        aside ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        aside ul li {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* Styling for links in asides */
+        aside a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        aside a:hover {
+            text-decoration: underline;
+        }
+
+
+        footer {
+            background-image: linear-gradient(to top, #e8198b 0%, #c7eafd 100%);
+            color: white;
+            /* Sets text color to white */
+            text-align: center;
+            padding: 20px 10px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            /* White glow effect */
+        }
+
+        footer a {
+            color: white;
+            /* Ensures links are the same color as the text */
+            text-decoration: none;
+            /* Optional: removes underline from links */
+        }
+
+        footer a:hover {
+            text-decoration: none;
+            /* Optional: adds underline on hover for better usability */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            /* Enhances the glow effect on hover */
+        }
+
+        footer ul li {
+            list-style-type: none;
+        }
+
+        .link-github {
+            display: inline-block;
+            color: white;
+            /* Ensures the text is white */
+            text-decoration: none;
+            /* No underline */
+            padding: 8px 12px;
+            /* Padding around the text and icon for better touch targets */
+            background: #333;
+            /* Dark background for the button */
+            border-radius: 4px;
+            /* Rounded corners for the button */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow for 3D effect */
+        }
+
+        .link-github svg {
+            width: 20px;
+            /* Specific width for the icon */
+            height: 20px;
+            /* Specific height for the icon */
+            vertical-align: middle;
+            /* Aligns icon with the text vertically */
+            margin-right: 8px;
+            /* Space between the icon and text */
+            fill: currentColor;
+            /* Icon color inherits from the text color */
+        }
+
+        .link-github:hover {
+            background-color: #444;
+            /* Slightly lighter background on hover */
+            text-decoration: none;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            /* Enhanced shadow on hover for depth */
+        }
+
+
+
+        /* Button styling for specific links */
+        .link-downloadcss,
+        .link-downloadhtml,
+        .link-codepen {
+            display: inline-block;
+            /* Makes the link inline but block-like for padding */
+            padding: 10px 20px;
+            /* Padding inside the button, adjust as needed */
+            margin: 10px 20px 10px 0;
+            /* Margin for spacing between buttons, adjust right margin as needed */
+            background-color: #ab47bc;
+            /* Example button color: blue */
+            color: white;
+            /* Text color */
+            text-decoration: none;
+            /* Removes underline */
+            border-radius: 5px;
+            /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Optional: Adds shadow to button */
+            transition: background-color 0.3s;
+            /* Smooth transition for hover effect */
+        }
+
+        .link-downloadcss:hover,
+        .link-downloadhtml:hover,
+        .link-codepen:hover {
+            color: black;
+            /* Darker shade of button color on hover */
+            text-decoration: none;
+        }
+
+
+        .link-guidelines {
+            color: #666;
+            /* Dark gray for subtle option */
+            text-decoration: underline;
+            /* Underline to show it's clickable */
+            font-weight: bold;
+            /* Bold to highlight its importance */
+        }
+
+        .link-guidelines:hover,
+        .link-guidelines:focus {
+            color: #444;
+            /* Darker gray on hover */
+            text-decoration: none;
+            /* No underline on hover for a cleaner look */
+        }
+
+        .link-allstyles {
+            background-color: #f8f9fa;
+            /* Very light background to stand out */
+            color: #007bff;
+            /* Bright blue for visibility */
+            padding: 5px 10px;
+            border-radius: 5px;
+            /* Rounded corners */
+            text-decoration: none;
+            /* No underline initially */
+        }
+
+        .link-allstyles:hover,
+        .link-allstyles:focus {
+            background-color: #e2e6ea;
+            /* Slightly darker background on hover */
+            color: #0056b3;
+            /* Standard link blue */
+            text-decoration: underline;
+            /* Underline on hover for emphasis */
+        }
+
+        .tech-features {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            /* Creates five columns */
+            gap: 10px;
+            /* Space between items */
+            list-style: none;
+            /* Removes default list styling */
+            padding: 0;
+            /* Removes default padding */
+            margin: 20px 0;
+            /* Adds some vertical space around the list */
+        }
+
+        .tech-features li {
+            background: #f4f4f4;
+            /* Light grey background */
+            border: 1px solid #ccc;
+            /* Grey border */
+            padding: 10px;
+            /* Padding inside each box */
+            text-align: center;
+            /* Centers the text horizontally */
+            transition: transform 0.3s ease-in-out;
+            /* Smooth transition for transform effects */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for 3D effect */
+        }
+
+        .tech-features li:hover {
+            background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+            transform: scale(1.1);
+            /* Scales up the box by 10% on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Style Stage</h1>
+            <h2>A modern CSS showcase styled by community contributions</h2>
+            <p>
+                Maintained by <a href="https://twitter.com/Krishpzs_7" class="text-link">Krish Suthar</a> of
+                <a href="https://www.georgiancollege.ca" class="text-link">Georgian College</a>
+            </p>
+            <a href="https://github.com/5t3ph/stylestage" class="link-github"><span><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" focusable="false"
+                        style="height: 20px; width: 20px;">
+                        <path
+                            d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z">
+                        </path>
+                    </svg>
+                </span>
+                Github</a>
+            <div class="scroll-arrow">&#x2193;</div> <!-- This is the arrow -->
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#guidelines">Guidelines</a></li>
+            <li><a href="#contribute">Contribute</a></li>
+            <li><a href="#files">Files</a></li>
+            <li><a href="https://stylestage.dev/styles/">All Styles</a></li>
+            <li><a href="https://stylestage.dev/resources/">Resources</a></li>
+        </ul>
+    </nav>
+
+    <main id="main" tabIndex="-1">
+        <div class="container">
+            <article id="about">
+                <section class="container">
+                    <h2><br>Setting the Stage</br></h2>
+                    <p>
+                        In 2003, <a href="http://daveshea.com/projects/zen/">Dave Shea</a> began a legendary
+                        project called <a href="http://www.csszengarden.com/">CSS Zen Garden</a> that provided
+                        a demonstration of "what can be accomplished through CSS-based design" until
+                        submissions stopped in 2013.
+                    </p>
+                    <p>
+                        <strong>Style Stage</strong> seeks to rekindle that spirit by providing this page as
+                        the base HTML for contributors - like you! - to re-style by submitting an alternate
+                        stylesheet.
+                    </p>
+                    <blockquote>
+                        <p>
+                            <strong>How it works:</strong> Visit the
+                            <a href="https://stylestage.dev/styles//">"All Styles"</a> directory page and select a style
+                            to view. A
+                            page with identical content to this one will be presented with a new design provided
+                            from a contributed stylesheet. CSS practitioners of any skill level are invited to
+                            <a href="#contribute">submit a stylesheet</a>!
+                        </p>
+                    </blockquote>
+                    <p>
+                        The HTML for this page was created to be semantic, accessible, and free of nearly all
+                        other opinions. Nested sectioning elements with the class `.container` serve as
+                        additional style aids since you do not have access to alter the base HTML. IDs are
+                        included where needed for nav anchors or accessibility, and a small number of
+                        additional classes are provided for key elements without IDs. Don't forget the
+                        `.skip-link`!
+                    </p>
+                </section>
+                <section class="container">
+                    <h2>Modern CSS Under the Spotlight</h2>
+                    <p>
+                        Modern CSS has increased and improved the available CSS properties and layout
+                        behaviors, and browser support is nearly in sync for most high-touch features.
+                    </p>
+                    <p>Some examples of modern CSS include:</p>
+                    <ul class="tech-features">
+                        <li>Flexbox</li>
+                        <li>Grid</li>
+                        <li>Custom Variables</li>
+                        <li>@supports()</li>
+                        <li>Gradients</li>
+                        <li>Animation</li>
+                        <li>3D Transforms</li>
+                        <li>Object-fit</li>
+                        <li>:focus-within</li>
+                        <li>Calc()</li>
+                        <li>Min() / Max() / Clamp()</li>
+                        <li>Viewport Units</li>
+                        <li>Scroll-(margin/padding/snap)</li>
+                        <li>Position: Sticky</li>
+                        <li>Two-value Display</li>
+                        <li>Expanded Media Query Values</li>
+                        <li>Variable Fonts</li>
+                    </ul>
+
+                    <p>
+                        We also collectively have an improved understanding of what it takes to make
+                        accessible experiences.
+                    </p>
+                    <p>
+                        <a href="#contribute">Join Style Stage as a contributor</a> to refresh your CSS
+                        skills, and learn from others!
+                    </p>
+                </section>
+            </article>
+            <article id="guidelines">
+                <section class="container">
+                    <h2>Guidelines</h2>
+                    <p>
+                        Contributing a stylesheet to Style Stage means you agree to abide by
+                        <a href="https://stylestage.dev/guidelines//">our full guidelines</a>.
+                    </p>
+                    <h3>TL;DR</h3>
+                    <p>
+                        All submissions will be autoprefixed and prepended with the
+                        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA license</a>
+                        as well as attribution using the metadata you provide. You may use any build setup you
+                        prefer, but the final submission should be the compiled, unminified CSS. You retain
+                        the copyright to original graphics and must ensure all graphics used are appropriately
+                        licensed. All asset links, including fonts, must be absolute to external resources.
+                        Stylesheets will be saved into the Github repo, and detected changes that violate the
+                        guidelines are cause for removal.
+                    </p>
+                    <p>
+                        Ensure your design is responsive, and that it passes accessible contrast (we'll be
+                        using aXe to verify). Animations should be removed via `prefers-reduced-motion`.
+                        Cutting-edge techniques should come with a fallback if needed to not severely impact
+                        the user experience. No content may be permanently hidden, and hidden items must come
+                        with an accessible viewing technique. Page load time should not exceed 3 seconds.
+                    </p>
+                    <p>
+                        Most importantly - have fun and learn something new! Check out the
+                        <a href="https://stylestage.dev/resources/">resources</a> for tips and inspiration.
+                    </p>
+                    <a href="https://stylestage.dev/guidelines/" class="link-guidelines">Review full Guidelines</a>
+                </section>
+            </article>
+            <article id="contribute">
+                <section class="container">
+                    <h2>Contribute</h2>
+                    <p>All who enjoy the craft of writing CSS are welcome to contribute!</p>
+                    <p>
+                        By participating as a contributor, your work will be shared with your provided
+                        attribution as long as Style Stage is online, your stylesheet link and any asset links
+                        remain valid, and all <a href="https://stylestage.dev/guidelines//">contributor guidelines</a>
+                        are adhered
+                        to.
+                    </p>
+                </section>
+                <section class="container">
+                    <h3>Steps to Contribute</h3>
+                    <ol>
+                        <li>
+                            Download the source files listed below to use as a reference to build your
+                            stylesheet.
+                        </li>
+                        <li>
+                            Host your completed stylesheet at a public URL, and ensure all asset links are
+                            absolute URLs to external resources.
+                        </li>
+                        <li>
+                            <a href="https://github.com/5t3ph/stylestage">Create a pull request</a> to add your
+                            information as a unique .json file to: src/_data/styles. The schema is detailed in
+                            the repo README, and you can review the FAQ on
+                            <a href="https://stylestage.dev/guidelines/#how-do-i-create-a-pull-request-pr">Creating a
+                                pull request</a>.
+                        </li>
+                        <li>
+                            If your contribution abides by the previously listed guidelines, your submission
+                            will be added!
+                        </li>
+                    </ol>
+                </section>
+                <div id="files">
+                    <div class="container">
+                        <h3>Source Files</h3>
+                        <a href="source/style.css" class="link-downloadcss" id="downloadCSS"
+                            download="style.css">Download
+                            CSS</a>
+                        <a href="source/index.html" class="link-downloadhtml" id="downloadHTML"
+                            download="index.html">Download
+                            HTML</a>
+                        <a href="https://codepen.io/Krish-Suthar/pen/bGJQrRx" class="link-codepen"
+                            download>Fork the CodePen</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+    <aside class="profile" aria-labelledby="profile-title">
+        <div class="container">
+            <h4 id="profile-title">Currently Staged Style</h4>
+            <ul>
+                <li class="profile-title"><span>Title:</span> <span>Radiant Stage</span></li>
+                <li class="profile-author"><span>Author:</span> <span>Krish Suthar</span></li>
+                <li class="profile-twitter">
+                    <span>Twitter:</span> <span><a href="https://twitter.com/Krishpzs_7">Cinematics_Explorer</a></span>
+                </li>
+                <li class="profile-website">
+                    <span>Website:</span> <span><a href="https://moderncss.dev">ModernCSS.dev</a></span>
+                </li>
+            </ul>
+            <a href="/styles/css/main-stage.css">View Stylesheet</a>
+        </div>
+    </aside>
+    <aside id="styles">
+        <div class="container">
+            <h2><br>Featured Styles</br></h2>
+            <ul class="features">
+                <li>
+                    <span>
+                        <a href="https://stylestage.dev/styles/moccasin-stage/">Mocassin Stage<span
+                                aria-hidden="true"></span></a>
+                        <span>by Gabriel Paixo</span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a href="https://stylestage.dev/styles/blueprint/">BluePrint<span aria-hidden="true"></span></a>
+                        <span>by Todd Libby</span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a href="https://stylestage.dev/styles/calm/">Calm<span aria-hidden="true"></span></a>
+                        <span>by Tripti Nayak</span>
+                    </span>
+                </li>
+            </ul>
+
+            <a href="https://stylestage.dev/styles/" class="link-allstyles">View All Styles</a>
+        </div>
+    </aside>
+    <footer class="page-footer">
+        <div class="container">
+            <p>Created and maintained by <a href="https://twitter.com/5t3ph">Stephanie Eckles (@5t3ph)</a></p>
+            <ul>
+                <li><a href="https://twitter.com/5t3ph" class="link-twittercontact">Contact on Twitter</a></li>
+                <li>
+                    <a href="https://github.com/5t3ph/stylestage" class="link-github">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"
+                            focusable="false">
+                            <path
+                                d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z">
+                            </path>
+                        </svg>
+                        Github
+                    </a>
+                </li>
+                <li><a href="/feed/" class="link-rss">RSS Feed</a></li>
+                <li><a href="/subscribe/" class="link-support">Subscribe to Updates</a></li>
+            </ul>
+            <p>Crafted with semantic, accessible HTML and CSS, <strong>Style Stage</strong> is generated
+                with <a href="https://11ty.dev">11ty</a> and hosted on
+                <a href="https://netlify.com">Netlify</a>. This project uses
+                <a href="https://postcss.org/">PostCSS</a> with
+                <a href="https://github.com/postcss/autoprefixer">autoprefixer</a>.
+            </p>
+            <p>Contributors retain copyright of all graphics used, and styles are available under
+                <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA</a>.
+            </p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.querySelector('.scroll-arrow').addEventListener('click', function () {
+            document.querySelector('nav').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('downloadCSS').addEventListener('click', function (e) {
+            e.preventDefault();  // Prevent the default anchor behavior
+            fetch('source/style.css')  // Adjust the path according to the file's new location
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'style.css';  // Suggests a default filename for the downloaded file
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);  // Clean up after download
+                })
+                .catch(() => alert('Failed to download file.'));
+        });
+
+        document.getElementById('downloadHTML').addEventListener('click', function (e) {
+            e.preventDefault();
+            fetch('source/index.html')  // Make sure the path is correct
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'index.html';  // Sets the filename for the downloaded file
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(() => alert('Failed to download file.'));
+        });
+
+    </script>
+
+</body>
+
+</html>
